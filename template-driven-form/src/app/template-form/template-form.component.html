@@ -1,0 +1,60 @@
+<h2>Template Driven From</h2>
+<div class="container">
+ <div class="row">
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offser-2">
+    <!--email input-->
+    <form (ngSubmit)="onSubmit(registrationForm)" #registrationForm = 'ngForm'>
+
+     <div class="form-group">
+        <label for="email">Email address</label>
+        <input
+        class="form-control"
+        type="email"
+        class="form-control"
+        id="email"
+        name="email"
+        ngModel
+        required
+        email
+        #email>
+        <span class="help-block"></span>
+     </div>
+    <!--Dropdown input
+        1. set advanced as default
+        2. Use one way binding
+    -->
+     <div class="form-group">
+      <label for="subscription">Subscription</label>
+       <select class="form-control"
+       id="subscription"
+       required
+       name="subscription"
+       [ngModel] ='defaultSubscription'
+       #subscription
+       class="form-control">
+        <option value="basic">Basic</option>
+        <option value="advanced" >Advanced</option>
+        <option value="pro">Pro</option>
+       </select>
+      </div>
+      <!--Password: required-->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password"
+         class="form-control"
+         id="password"
+         ngModel
+         #password
+         required>
+      </div>
+
+      <!--Warning message for whole form being touch and invalid-->
+      <p *ngIf="!registrationForm.valid && registrationForm.touched" style="background: lightblue;">
+        Please fill in all the fields
+      </p>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div> <!--column-->
+ </div> <!--row-->
+</div> <!--container-->
